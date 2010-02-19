@@ -1,5 +1,5 @@
-.viminfo
+.vim*
 .bash*
 .profile
-cache/
-log/
+.less*
+.ssh

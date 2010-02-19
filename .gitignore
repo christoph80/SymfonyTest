@@ -1,2 +1,5 @@
+.viminfo
+.bash*
+.profile
 cache/
 log/

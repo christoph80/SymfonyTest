@@ -1,5 +1,7 @@
 .vim*
 .bash*
 .profile
+.less*
+.ssh
 cache/
 log/

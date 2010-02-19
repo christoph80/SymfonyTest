@@ -1,0 +1,60 @@
+Directive:
+  actAs: { Timestampable: ~ }
+  columns:
+    district: { type: string(255), notnull: true, unique: true }
+
+Ranking:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+    icon: { type: string(255), notnull: true, unique: true }
+
+User:
+  actAs: { Timestampable: ~ }
+  columns:
+    directive_id: { type: integer, notnull: true } 
+    username:     { type: string(255), notnull: true, unique: true }
+    password:     { type: string(255), notnull: true }
+    regkey:       { type: string(255), notnull: true, unique: true }
+    role:         { type: string(255), notnull: true }
+    ranking_id:   { type: integer, notnull: true }
+  relations:
+    Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveUser }
+    Ranking:      { local: ranking_id, foreign: id, foreignAlias: RankingUser }
+
+Content:
+  actAs: { Timestampable: ~ }
+  columns:
+    name:         { type: string(255), notnull: true }
+    shortdesc:    { type: string(255), notnull: true }
+    longdesc:     { type: string(2550), notnull: true }
+    type:         { type: string(255), notnull: true }
+    link:         { type: string(255), notnull: true }
+    user_id:      { type: integer, notnull: true }
+    directive_id: { type: integer, notnull: true }
+    fullaccess_id:  { type: integer }
+    prevaccess_id:  { type: integer }
+  relations:      
+    User:	  { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: UserContent }	
+    Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveContent }
+    Ranking:	  { local: fullaccess_id, foreign: id, foreignAlias: RankingFullAccess }
+    Ranking:	  { local: prevaccess_id, foreign: id, foreignAlias: RankingPreviewAccess }
+    
+Topic:
+  actAs: { Timestampable: ~ }
+  columns:
+    title:        { type: string(255), notnull: true }
+    directive_id: { type: integer, notnull: true }
+  relations:
+    Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveTopic }
+
+Thread:
+  actAs: { Timestampable: ~ }
+  columns:
+    title:        { type: string(255), notnull: true }
+    content_id:   { type: integer }
+    topic_id:     { type: integer }
+  relations:
+    Content:      { onDelete: CASCADE, local: content_id, foreign: id, foreignAlias: ContentThread }
+    Topic:        { onDelete: CASCADE, local: topic_id, foreign: id, foreignAlias: TopicThread } 
+    

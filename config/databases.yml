@@ -2,6 +2,6 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn: 'mysql:host=localhost;dbname=helloworlddb'
+      dsn: 'mysql:host=localhost;dbname=rankingdb'
       username: root
       password: testpass

@@ -1,40 +1,38 @@
 <?php
 
 /**
- * Directive form base class.
+ * Page form base class.
  *
- * @method Directive getObject() Returns the current form's model object
+ * @method Page getObject() Returns the current form's model object
  *
  * @package    HELLO_WORLD
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
-abstract class BaseDirectiveForm extends BaseFormDoctrine
+abstract class BasePageForm extends BaseFormDoctrine
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
-      'name'       => new sfWidgetFormInputText(),
-      'misc'       => new sfWidgetFormInputText(),
+      'title'      => new sfWidgetFormInputText(),
+      'shortdesc'  => new sfWidgetFormInputText(),
+      'content'    => new sfWidgetFormTextarea(),
       'created_at' => new sfWidgetFormDateTime(),
       'updated_at' => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
       'id'         => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
-      'name'       => new sfValidatorString(array('max_length' => 255)),
-      'misc'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'title'      => new sfValidatorString(array('max_length' => 255)),
+      'shortdesc'  => new sfValidatorString(array('max_length' => 255)),
+      'content'    => new sfValidatorString(array('max_length' => 2550)),
       'created_at' => new sfValidatorDateTime(),
       'updated_at' => new sfValidatorDateTime(),
     ));
 
-    $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'Directive', 'column' => array('name')))
-    );
-
-    $this->widgetSchema->setNameFormat('directive[%s]');
+    $this->widgetSchema->setNameFormat('page[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -45,7 +43,7 @@ abstract class BaseDirectiveForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Directive';
+    return 'Page';
   }
 
 }

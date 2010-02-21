@@ -1,7 +1,8 @@
 Directive:
   actAs: { Timestampable: ~ }
   columns:
-    district: { type: string(255), notnull: true, unique: true }
+    name: { type: string(255), notnull: true, unique: true }
+    misc: { type: string(255) }
 
 Ranking:
   actAs: { Timestampable: ~ }
@@ -12,15 +13,15 @@ Ranking:
 User:
   actAs: { Timestampable: ~ }
   columns:
-    directive_id: { type: integer, notnull: true } 
     username:     { type: string(255), notnull: true, unique: true }
     password:     { type: string(255), notnull: true }
     regkey:       { type: string(255), notnull: true, unique: true }
     role:         { type: string(255), notnull: true }
+    directive_id: { type: integer, notnull: true } 
     ranking_id:   { type: integer, notnull: true }
   relations:
     Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveUser }
-    Ranking:      { local: ranking_id, foreign: id, foreignAlias: RankingUser }
+    Ranking:      { onDelete: CASCADE, local: ranking_id, foreign: id, foreignAlias: RankingUser }
 
 Content:
   actAs: { Timestampable: ~ }
@@ -40,6 +41,13 @@ Content:
     Ranking:	  { local: fullaccess_id, foreign: id, foreignAlias: RankingFullAccess }
     Ranking:	  { local: prevaccess_id, foreign: id, foreignAlias: RankingPreviewAccess }
     
+Page:
+  actAs: { Timestampable: ~ }
+  columns:
+    title:         { type: string(255), notnull: true }
+    shortdesc:     { type: string(255), notnull: true }
+    content:       { type: string(2550), notnull: true }
+
 Topic:
   actAs: { Timestampable: ~ }
   columns:

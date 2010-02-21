@@ -16,11 +16,11 @@ abstract class BaseUserForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
-      'directive_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Directive'), 'add_empty' => false)),
       'username'     => new sfWidgetFormInputText(),
       'password'     => new sfWidgetFormInputText(),
       'regkey'       => new sfWidgetFormInputText(),
       'role'         => new sfWidgetFormInputText(),
+      'directive_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Directive'), 'add_empty' => false)),
       'ranking_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Ranking'), 'add_empty' => false)),
       'created_at'   => new sfWidgetFormDateTime(),
       'updated_at'   => new sfWidgetFormDateTime(),
@@ -28,11 +28,11 @@ abstract class BaseUserForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'           => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
-      'directive_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Directive'))),
       'username'     => new sfValidatorString(array('max_length' => 255)),
       'password'     => new sfValidatorString(array('max_length' => 255)),
       'regkey'       => new sfValidatorString(array('max_length' => 255)),
       'role'         => new sfValidatorString(array('max_length' => 255)),
+      'directive_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Directive'))),
       'ranking_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Ranking'))),
       'created_at'   => new sfValidatorDateTime(),
       'updated_at'   => new sfValidatorDateTime(),

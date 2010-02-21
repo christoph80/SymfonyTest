@@ -374,3 +374,29 @@ em
 {
   display: inline;
 }
+
+table
+{
+width: 100%;
+}
+
+tr.even
+{
+  background-color: #f3fafc;
+}
+
+tr.odd
+{
+}
+
+tr:hover
+{
+  background-color: #fff;
+}
+
+td
+{
+  padding: 12px 15px;
+  border-bottom: 1px dotted #999;
+  text-align: left;
+}

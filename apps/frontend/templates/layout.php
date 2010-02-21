@@ -13,14 +13,14 @@
       <div id="header">
         <div class="content">
           <h1><a href="<?php echo url_for('user/index') ?>">
-            <img src="/images/logo.jpg" alt="Register to openBRD+" />
+            <img src="/images/logo.jpg" alt="openBRD+" />
           </a></h1>
  
           <div id="sub_header">
             <div class="post">
               <h2>Ask for people</h2>
               <div>
-                <a href="<?php echo url_for('user/index') ?>">Register to openBRD+</a>
+                <a href="<?php echo url_for('user/new') ?>">Register to openBRD+</a>
               </div>
             </div>
  

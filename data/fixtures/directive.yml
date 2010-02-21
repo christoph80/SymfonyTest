@@ -1,0 +1,13 @@
+Directive:
+  world:
+    name: System
+    misc: System wide directive
+  charlottenburg:
+    name: Charlottenburg
+    misc: Alle Mitarbeiter des Destrikts Charlottenburg-Wilmersdorf
+  spandau:
+    name: Spandau
+    misc: Alle Mitarbeiter des Destrikts Spandau
+  reinikendorf:
+    name: Reinikendorf
+    misc: Alle Mitarbeiter des Destrikts Reinikendorf-Tegel

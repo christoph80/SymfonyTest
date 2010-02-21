@@ -1,5 +1,4 @@
 <!-- apps/frontend/modules/job/templates/indexSuccess.php -->
-<?php use_stylesheet('users.css') ?>
 
 <h1>Users: <?php echo $users->count() ?></h1>
  

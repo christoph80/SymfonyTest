@@ -5,8 +5,12 @@
       <td><?php echo $directive->getId() ?></td>
     </tr>
     <tr>
-      <th>District:</th>
-      <td><?php echo $directive->getDistrict() ?></td>
+      <th>Name:</th>
+      <td><?php echo $directive->getName() ?></td>
+    </tr>
+    <tr>
+      <th>Misc:</th>
+      <td><?php echo $directive->getMisc() ?></td>
     </tr>
     <tr>
       <th>Created at:</th>

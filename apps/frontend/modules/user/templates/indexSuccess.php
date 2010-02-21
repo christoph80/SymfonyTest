@@ -1,34 +1,35 @@
-<h1>Users List</h1>
+<!-- apps/frontend/modules/job/templates/indexSuccess.php -->
+<?php use_stylesheet('users.css') ?>
 
-<table>
-  <thead>
+<h1>Users: <?php echo $users->count() ?></h1>
+ 
+<div id="users">
+  <table class="users">
+   
+   <thead class="heading">
     <tr>
-      <th>Id</th>
-      <th>Directive</th>
       <th>Username</th>
-      <th>Password</th>
-      <th>Regkey</th>
-      <th>Role</th>
+      <th>Active Since</th>
+      <th>Directive</th>
       <th>Ranking</th>
-      <th>Created at</th>
-      <th>Updated at</th>
     </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($users as $user): ?>
-    <tr>
-      <td><a href="<?php echo url_for('user/show?id='.$user->getId()) ?>"><?php echo $user->getId() ?></a></td>
-      <td><?php echo $user->getDirectiveId() ?></td>
-      <td><?php echo $user->getUsername() ?></td>
-      <td><?php echo $user->getPassword() ?></td>
-      <td><?php echo $user->getRegkey() ?></td>
-      <td><?php echo $user->getRole() ?></td>
-      <td><?php echo $user->getRankingId() ?></td>
-      <td><?php echo $user->getCreatedAt() ?></td>
-      <td><?php echo $user->getUpdatedAt() ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
+  </thead> 
 
-  <a href="<?php echo url_for('user/new') ?>">New</a>
+   <?php foreach ($users as $i => $user): ?>
+      <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
+        <td class="name">
+	  <a href="<?php echo url_for('user/show?id='.$user->getId()) ?>">
+            <?php echo $user->getUsername() ?>
+          </a>
+	</td>
+        <td class="details">
+          <?php echo $user->getCreatedAt() ?>
+        </td>
+        <td class="directive"><?php echo $user->getDirective() ?></td>
+        <td class="ranking"><?php echo $user->getRanking() ?></td>
+      </tr>
+    <?php endforeach; ?>
+  </table>
+</div>
+
+<a href="<?php echo url_for('user/new') ?>">New</a>

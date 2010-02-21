@@ -1,3 +1,8 @@
+<?php slot('title', sprintf('User %s', $user->getUsername())) ?>
+
+
+<h1><?php echo $user->getUsername() ?></h1>
+
 <table>
   <tbody>
     <tr>

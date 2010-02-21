@@ -1,0 +1,5 @@
+indexSuccess:
+  stylesheet: [users.css]
+
+showSuccess:
+  stylesheet: [user.css]

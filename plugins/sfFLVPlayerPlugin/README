@@ -1,0 +1,32 @@
+sfFLVPlayer plugin
+===================
+
+The **sfFLVPlayerPlugin** is a symfony plugin that provides a player for flash "flv" movies. The player has been developed by Neolao and is available at [flv-player.net](http://flv-player.net/). Neolao provides several players. We choose to implement the [MULTI](http://flv-player.net/players/multi/) version, which is the most complete version. This version supports playlists.
+
+
+Installation
+============
+
+  * Install the plugin
+  
+          symfony plugin-install http://plugins.symfony-project.com/sfFLVPlayerPlugin
+  
+  * Enable the demo module in your *settings.yml* (optional): sfFLVPlayerTest
+
+        all:
+          .settings:
+            enabled_modules:      [default, sfFLVPlayerTest]
+
+  * Clear you cache
+  
+        symfony cc
+
+
+Flashvars: the parameters controlling the player
+=================================================
+
+The documentation and some examples of usage of the player are available on [flv-player.net](http://flv-player.net). The list of all the parameters used to control the player behavior can be found [here](http://flv-player.net/players/multi/documentation/).
+
+
+
+

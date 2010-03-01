@@ -4,3 +4,5 @@
 .less*
 .ssh
 *~
+cache/*
+log/*

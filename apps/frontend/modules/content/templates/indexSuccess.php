@@ -37,4 +37,6 @@
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('content/new') ?>">New</a>
+<a href="http://localhost:8080/frontend_dev.php/sfFLVPlayerTest" target="_self">Video Demo</a>
+
+<a href="<?php echo url_for('content/new') ?>">New</a>

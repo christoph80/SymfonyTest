@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>[automatic]</name>
+ <channel>pear.symfony-project.com</channel>
+ <summary>FLV Player plugin</summary>
+ <description>The sfFLVPlayerPlugin is a symfony plugin that provides a player for flash movies. The player has been developed by Neolao (http://flv-player.net).</description>
+ <lead>
+  <name>Raffaele BOLLIGER</name>
+  <user>bolliger</user>
+  <email>rbo@donax.ch</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Dave BERGOMI</name>
+  <user>blaster</user>
+  <email>dave.bergomi@donax.ch</email>
+  <active>yes</active>
+ </developer>
+   <developer>
+  <name>Nicolas BORBOEN</name>
+  <user>ponsfrilus</user>
+  <email>nicolas.borboen@donax.ch</email>
+  <active>yes</active>
+ </developer>
+ <date>[automatic]</date>
+ <version>
+   <release>0.1.3</release>
+   <api>0.0.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <notes>The player itself has been released under the Creative Commons license http://creativecommons.org/licenses/by-sa/3.0/ and MPL 1.1 http://www.mozilla.org/MPL/</notes>
+ <contents>
+   [automatic]
+ </contents>
+
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>0.8.1</min>
+    <max>1.2.0</max>
+    <exclude>1.2.0</exclude>
+   </package>
+  </required>
+ </dependencies>
+
+ <phprelease>
+ </phprelease>
+
+ <changelog>
+ <release>
+   <version>
+    <release>0.1.3</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2008-08-15</date>
+   <license>MIT license</license>
+   <notes>Adapted README and LICENSE to new symfony plugins interface</notes>
+   <notes>Tested plugin with symfony 1.1</notes>
+  </release>
+ 
+ </changelog>
+</package>

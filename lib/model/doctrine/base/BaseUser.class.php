@@ -8,7 +8,7 @@
  * @property string $username
  * @property string $password
  * @property string $regkey
- * @property string $role
+ * @property enum $role
  * @property integer $directive_id
  * @property integer $ranking_id
  * @property Directive $Directive
@@ -18,7 +18,7 @@
  * @method string              getUsername()     Returns the current record's "username" value
  * @method string              getPassword()     Returns the current record's "password" value
  * @method string              getRegkey()       Returns the current record's "regkey" value
- * @method string              getRole()         Returns the current record's "role" value
+ * @method enum                getRole()         Returns the current record's "role" value
  * @method integer             getDirectiveId()  Returns the current record's "directive_id" value
  * @method integer             getRankingId()    Returns the current record's "ranking_id" value
  * @method Directive           getDirective()    Returns the current record's "Directive" value
@@ -61,10 +61,14 @@ abstract class BaseUser extends sfDoctrineRecord
              'unique' => true,
              'length' => '255',
              ));
-        $this->hasColumn('role', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => '255',
+        $this->hasColumn('role', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 'administrator',
+              1 => 'moderator',
+              2 => 'user',
+             ),
              ));
         $this->hasColumn('directive_id', 'integer', null, array(
              'type' => 'integer',

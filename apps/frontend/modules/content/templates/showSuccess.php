@@ -21,8 +21,16 @@
       <td><?php echo $content->getType() ?></td>
     </tr>
     <tr>
-      <th>Link:</th>
-      <td><?php echo $content->getLink() ?></td>
+      <th>Full content:</th>
+      <td><?php echo $content->getFullContent() ?></td>
+    </tr>
+    <tr>
+      <th>Prev content:</th>
+      <td><?php echo $content->getPrevContent() ?></td>
+    </tr>
+    <tr>
+      <th>Thmb content:</th>
+      <td><?php echo $content->getThmbContent() ?></td>
     </tr>
     <tr>
       <th>User:</th>

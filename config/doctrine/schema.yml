@@ -7,8 +7,9 @@ Directive:
 Ranking:
   actAs: { Timestampable: ~ }
   columns:
-    name: { type: string(255), notnull: true, unique: true }
-    icon: { type: string(255), notnull: true, unique: true }
+    name:  { type: string(255), notnull: true, unique: true }
+    prts:  { type: integer, notnull: true }
+    icon:  { type: string(255), notnull: true, unique: true }
 
 User:
   actAs: { Timestampable: ~ }
@@ -16,7 +17,7 @@ User:
     username:     { type: string(255), notnull: true, unique: true }
     password:     { type: string(255), notnull: true }
     regkey:       { type: string(255), notnull: true, unique: true }
-    role:         { type: string(255), notnull: true }
+    role:         { type: enum, values: [administrator, moderator, user] }
     directive_id: { type: integer, notnull: true } 
     ranking_id:   { type: integer, notnull: true }
   relations:
@@ -29,8 +30,10 @@ Content:
     name:         { type: string(255), notnull: true }
     shortdesc:    { type: string(255), notnull: true }
     longdesc:     { type: string(2550), notnull: true }
-    type:         { type: string(255), notnull: true }
-    link:         { type: string(255), notnull: true }
+    type:         { type: enum, values: [video, audio, document] }
+    full_content: { type: string(255), notnull: true }
+    prev_content: { type: string(255), notnull: true }
+    thmb_content: { type: string(255), notnull: true }
     user_id:      { type: integer, notnull: true }
     directive_id: { type: integer, notnull: true }
     fullaccess_id:  { type: integer }
@@ -38,8 +41,8 @@ Content:
   relations:      
     User:	  { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: UserContent }	
     Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveContent }
-    Ranking:	  { local: fullaccess_id, foreign: id, foreignAlias: RankingFullAccess }
-    Ranking:	  { local: prevaccess_id, foreign: id, foreignAlias: RankingPreviewAccess }
+    FullAccess:   { class: Ranking, local: fullaccess_id, foreign: id, foreignAlias: RankingFullAccess }
+    PrevAccess:	  { class: Ranking, local: prevaccess_id, foreign: id, foreignAlias: RankingPrevAccess }
     
 Page:
   actAs: { Timestampable: ~ }

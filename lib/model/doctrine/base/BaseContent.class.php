@@ -8,42 +8,51 @@
  * @property string $name
  * @property string $shortdesc
  * @property string $longdesc
- * @property string $type
- * @property string $link
+ * @property enum $type
+ * @property string $full_content
+ * @property string $prev_content
+ * @property string $thmb_content
  * @property integer $user_id
  * @property integer $directive_id
  * @property integer $fullaccess_id
  * @property integer $prevaccess_id
  * @property User $User
  * @property Directive $Directive
- * @property Ranking $Ranking
+ * @property Ranking $FullAccess
+ * @property Ranking $PrevAccess
  * @property Doctrine_Collection $ContentThread
  * 
  * @method string              getName()          Returns the current record's "name" value
  * @method string              getShortdesc()     Returns the current record's "shortdesc" value
  * @method string              getLongdesc()      Returns the current record's "longdesc" value
- * @method string              getType()          Returns the current record's "type" value
- * @method string              getLink()          Returns the current record's "link" value
+ * @method enum                getType()          Returns the current record's "type" value
+ * @method string              getFullContent()   Returns the current record's "full_content" value
+ * @method string              getPrevContent()   Returns the current record's "prev_content" value
+ * @method string              getThmbContent()   Returns the current record's "thmb_content" value
  * @method integer             getUserId()        Returns the current record's "user_id" value
  * @method integer             getDirectiveId()   Returns the current record's "directive_id" value
  * @method integer             getFullaccessId()  Returns the current record's "fullaccess_id" value
  * @method integer             getPrevaccessId()  Returns the current record's "prevaccess_id" value
  * @method User                getUser()          Returns the current record's "User" value
  * @method Directive           getDirective()     Returns the current record's "Directive" value
- * @method Ranking             getRanking()       Returns the current record's "Ranking" value
+ * @method Ranking             getFullAccess()    Returns the current record's "FullAccess" value
+ * @method Ranking             getPrevAccess()    Returns the current record's "PrevAccess" value
  * @method Doctrine_Collection getContentThread() Returns the current record's "ContentThread" collection
  * @method Content             setName()          Sets the current record's "name" value
  * @method Content             setShortdesc()     Sets the current record's "shortdesc" value
  * @method Content             setLongdesc()      Sets the current record's "longdesc" value
  * @method Content             setType()          Sets the current record's "type" value
- * @method Content             setLink()          Sets the current record's "link" value
+ * @method Content             setFullContent()   Sets the current record's "full_content" value
+ * @method Content             setPrevContent()   Sets the current record's "prev_content" value
+ * @method Content             setThmbContent()   Sets the current record's "thmb_content" value
  * @method Content             setUserId()        Sets the current record's "user_id" value
  * @method Content             setDirectiveId()   Sets the current record's "directive_id" value
  * @method Content             setFullaccessId()  Sets the current record's "fullaccess_id" value
  * @method Content             setPrevaccessId()  Sets the current record's "prevaccess_id" value
  * @method Content             setUser()          Sets the current record's "User" value
  * @method Content             setDirective()     Sets the current record's "Directive" value
- * @method Content             setRanking()       Sets the current record's "Ranking" value
+ * @method Content             setFullAccess()    Sets the current record's "FullAccess" value
+ * @method Content             setPrevAccess()    Sets the current record's "PrevAccess" value
  * @method Content             setContentThread() Sets the current record's "ContentThread" collection
  * 
  * @package    HELLO_WORLD
@@ -71,12 +80,26 @@ abstract class BaseContent extends sfDoctrineRecord
              'notnull' => true,
              'length' => '2550',
              ));
-        $this->hasColumn('type', 'string', 255, array(
+        $this->hasColumn('type', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 'video',
+              1 => 'audio',
+              2 => 'document',
+             ),
+             ));
+        $this->hasColumn('full_content', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
              'length' => '255',
              ));
-        $this->hasColumn('link', 'string', 255, array(
+        $this->hasColumn('prev_content', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => '255',
+             ));
+        $this->hasColumn('thmb_content', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
              'length' => '255',
@@ -110,7 +133,11 @@ abstract class BaseContent extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('Ranking', array(
+        $this->hasOne('Ranking as FullAccess', array(
+             'local' => 'fullaccess_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('Ranking as PrevAccess', array(
              'local' => 'prevaccess_id',
              'foreign' => 'id'));
 

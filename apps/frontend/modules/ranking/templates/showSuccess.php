@@ -9,6 +9,10 @@
       <td><?php echo $ranking->getName() ?></td>
     </tr>
     <tr>
+      <th>Prts:</th>
+      <td><?php echo $ranking->getPrts() ?></td>
+    </tr>
+    <tr>
       <th>Icon:</th>
       <td><?php echo $ranking->getIcon() ?></td>
     </tr>

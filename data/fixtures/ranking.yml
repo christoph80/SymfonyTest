@@ -1,21 +1,21 @@
 Ranking:
   boss:
     name: Boss
-    prts: '5'
+    prio: '5'
     icon: boss.png
   gold:
     name: Gold
-    prts: '4'
+    prio: '4'
     icon: gold.png
   silber:
     name: Silber
-    prts: '3'
+    prio: '3'
     icon: silver.png
   bronze:
     name: Bronze
-    prts: '2'
+    prio: '2'
     icon: bronce.png    
   noob:
     name: Noob
-    prts: '1'
+    prio: '1'
     icon: noob.png

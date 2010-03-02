@@ -8,13 +8,16 @@
  * @property string $title
  * @property string $shortdesc
  * @property string $content
+ * @property boolean $display_media
  * 
- * @method string getTitle()     Returns the current record's "title" value
- * @method string getShortdesc() Returns the current record's "shortdesc" value
- * @method string getContent()   Returns the current record's "content" value
- * @method Page   setTitle()     Sets the current record's "title" value
- * @method Page   setShortdesc() Sets the current record's "shortdesc" value
- * @method Page   setContent()   Sets the current record's "content" value
+ * @method string  getTitle()         Returns the current record's "title" value
+ * @method string  getShortdesc()     Returns the current record's "shortdesc" value
+ * @method string  getContent()       Returns the current record's "content" value
+ * @method boolean getDisplayMedia()  Returns the current record's "display_media" value
+ * @method Page    setTitle()         Sets the current record's "title" value
+ * @method Page    setShortdesc()     Sets the current record's "shortdesc" value
+ * @method Page    setContent()       Sets the current record's "content" value
+ * @method Page    setDisplayMedia()  Sets the current record's "display_media" value
  * 
  * @package    HELLO_WORLD
  * @subpackage model
@@ -40,6 +43,10 @@ abstract class BasePage extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => '2550',
+             ));
+        $this->hasColumn('display_media', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
     }
 

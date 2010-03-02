@@ -14,6 +14,7 @@ abstract class BaseThreadFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'title'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'content'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'content_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Content'), 'add_empty' => true)),
       'topic_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Topic'), 'add_empty' => true)),
       'created_at' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
@@ -22,6 +23,7 @@ abstract class BaseThreadFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'title'      => new sfValidatorPass(array('required' => false)),
+      'content'    => new sfValidatorPass(array('required' => false)),
       'content_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Content'), 'column' => 'id')),
       'topic_id'   => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Topic'), 'column' => 'id')),
       'created_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
@@ -47,6 +49,7 @@ abstract class BaseThreadFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'         => 'Number',
       'title'      => 'Text',
+      'content'    => 'Text',
       'content_id' => 'ForeignKey',
       'topic_id'   => 'ForeignKey',
       'created_at' => 'Date',

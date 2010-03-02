@@ -5,7 +5,7 @@
     <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Prts</th>
+      <th>Prio</th>
       <th>Icon</th>
       <th>Created at</th>
       <th>Updated at</th>
@@ -16,7 +16,7 @@
     <tr>
       <td><a href="<?php echo url_for('ranking/show?id='.$ranking->getId()) ?>"><?php echo $ranking->getId() ?></a></td>
       <td><?php echo $ranking->getName() ?></td>
-      <td><?php echo $ranking->getPrts() ?></td>
+      <td><?php echo $ranking->getPrio() ?></td>
       <td><?php echo $ranking->getIcon() ?></td>
       <td><?php echo $ranking->getCreatedAt() ?></td>
       <td><?php echo $ranking->getUpdatedAt() ?></td>

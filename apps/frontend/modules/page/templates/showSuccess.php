@@ -13,8 +13,12 @@
       <td><?php echo $page->getShortdesc() ?></td>
     </tr>
     <tr>
-      <th>Content:</th>
-      <td><?php echo $page->getContent() ?></td>
+      <th>Textbody:</th>
+      <td><?php echo $page->getTextbody() ?></td>
+    </tr>
+    <tr>
+      <th>Has content:</th>
+      <td><?php echo $page->getHasContent() ?></td>
     </tr>
     <tr>
       <th>Created at:</th>

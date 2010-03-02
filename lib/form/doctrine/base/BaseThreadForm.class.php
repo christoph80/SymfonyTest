@@ -17,7 +17,7 @@ abstract class BaseThreadForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
       'title'      => new sfWidgetFormInputText(),
-      'content'    => new sfWidgetFormTextarea(),
+      'textbody'   => new sfWidgetFormTextarea(),
       'content_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Content'), 'add_empty' => true)),
       'topic_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Topic'), 'add_empty' => true)),
       'created_at' => new sfWidgetFormDateTime(),
@@ -27,7 +27,7 @@ abstract class BaseThreadForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'         => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'title'      => new sfValidatorString(array('max_length' => 255)),
-      'content'    => new sfValidatorString(array('max_length' => 2550)),
+      'textbody'   => new sfValidatorString(array('max_length' => 2550)),
       'content_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Content'), 'required' => false)),
       'topic_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Topic'), 'required' => false)),
       'created_at' => new sfValidatorDateTime(),

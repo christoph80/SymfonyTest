@@ -9,8 +9,8 @@
       <td><?php echo $ranking->getName() ?></td>
     </tr>
     <tr>
-      <th>Prts:</th>
-      <td><?php echo $ranking->getPrts() ?></td>
+      <th>Prio:</th>
+      <td><?php echo $ranking->getPrio() ?></td>
     </tr>
     <tr>
       <th>Icon:</th>

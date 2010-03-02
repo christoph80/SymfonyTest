@@ -49,8 +49,8 @@ Page:
   columns:
     title:         { type: string(255), notnull: true }
     shortdesc:     { type: string(255), notnull: true }
-    content:       { type: string(2550), notnull: true }
-    display_media: { type: boolean, default: false }
+    textbody:      { type: string(2550), notnull: true }
+    has_content:   { type: boolean, default: false }
 
 Topic:
   actAs: { Timestampable: ~ }
@@ -64,7 +64,7 @@ Thread:
   actAs: { Timestampable: ~ }
   columns:
     title:        { type: string(255), notnull: true }
-    content:      { type: string(2550), notnull: true }
+    textbody:     { type: string(2550), notnull: true }
     content_id:   { type: integer }
     topic_id:     { type: integer }
   relations:

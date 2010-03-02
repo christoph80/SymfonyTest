@@ -9,6 +9,10 @@
       <td><?php echo $thread->getTitle() ?></td>
     </tr>
     <tr>
+      <th>Textbody:</th>
+      <td><?php echo $thread->getTextbody() ?></td>
+    </tr>
+    <tr>
       <th>Content:</th>
       <td><?php echo $thread->getContentId() ?></td>
     </tr>

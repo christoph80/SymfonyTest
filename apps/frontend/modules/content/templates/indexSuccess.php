@@ -1,4 +1,4 @@
-<h1>Contents List</h1>
+<h1>Inhalte</h1>
 
 <table>
   <thead>
@@ -44,6 +44,8 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<hr />
 
 <p>
 <a href="http://localhost:8080/frontend_dev.php/sfFLVPlayerTest" target="_self">Video Demo</h>

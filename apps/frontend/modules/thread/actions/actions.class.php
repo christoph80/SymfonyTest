@@ -25,7 +25,16 @@ class threadActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new ThreadForm();
+     if($request->getParameter('topic_id'))
+     {
+       $t = new Thread();
+       $t->setTopicId($request->getParameter('topic_id'));
+       $this->form = new ThreadForm($t);
+     }
+     else 
+     {
+     	$this->form = new ThreadForm();
+     }
   }
 
   public function executeCreate(sfWebRequest $request)

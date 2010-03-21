@@ -35,6 +35,15 @@ content-owner:
     id: \d+
     sf_method: [get]
 
+new-topic-thread:
+  url:   /thread/:topic_id
+  class:   sfDoctrineRoute
+  options: { model: Thread, type: object }
+  param:   { module: thread, action: new }
+  requirements:
+    id: \d+
+    sf_method: [get]
+
 # default rules
 homepage:
   url:   /

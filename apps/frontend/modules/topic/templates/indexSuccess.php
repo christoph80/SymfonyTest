@@ -3,7 +3,10 @@
 
     <?php foreach ($topics as $topic): ?>
     
-    <h1>Topic: <?php echo $topic->getTitle() ?></h1>	
+    <h1>
+	Topic: <?php echo $topic->getTitle()?> 
+        <a href="<?php echo url_for('thread/new?topic_id='.$topic->getId()) ?>"> [Neuer Thread] </a>
+    </h1>	
 
     <table class="threads">
 
@@ -36,4 +39,6 @@
     
   <?php endforeach; ?>
 
-  <a href="<?php echo url_for('topic/new') ?>">New</a>
+  <hr />
+
+  <a href="<?php echo url_for('topic/new') ?>">Neues Topic</a>

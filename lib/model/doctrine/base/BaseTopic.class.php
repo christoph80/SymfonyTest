@@ -19,9 +19,9 @@
  * @method Topic               setDirective()    Sets the current record's "Directive" value
  * @method Topic               setTopicThread()  Sets the current record's "TopicThread" collection
  * 
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage model
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 abstract class BaseTopic extends sfDoctrineRecord

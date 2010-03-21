@@ -14,6 +14,8 @@
  * @property Directive $Directive
  * @property Ranking $Ranking
  * @property Doctrine_Collection $UserContent
+ * @property Doctrine_Collection $ThreadAuthor
+ * @property Doctrine_Collection $ReplyAuthor
  * 
  * @method string              getUsername()     Returns the current record's "username" value
  * @method string              getPassword()     Returns the current record's "password" value
@@ -24,6 +26,8 @@
  * @method Directive           getDirective()    Returns the current record's "Directive" value
  * @method Ranking             getRanking()      Returns the current record's "Ranking" value
  * @method Doctrine_Collection getUserContent()  Returns the current record's "UserContent" collection
+ * @method Doctrine_Collection getThreadAuthor() Returns the current record's "ThreadAuthor" collection
+ * @method Doctrine_Collection getReplyAuthor()  Returns the current record's "ReplyAuthor" collection
  * @method User                setUsername()     Sets the current record's "username" value
  * @method User                setPassword()     Sets the current record's "password" value
  * @method User                setRegkey()       Sets the current record's "regkey" value
@@ -33,10 +37,12 @@
  * @method User                setDirective()    Sets the current record's "Directive" value
  * @method User                setRanking()      Sets the current record's "Ranking" value
  * @method User                setUserContent()  Sets the current record's "UserContent" collection
+ * @method User                setThreadAuthor() Sets the current record's "ThreadAuthor" collection
+ * @method User                setReplyAuthor()  Sets the current record's "ReplyAuthor" collection
  * 
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage model
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 abstract class BaseUser extends sfDoctrineRecord
@@ -94,6 +100,14 @@ abstract class BaseUser extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('Content as UserContent', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Thread as ThreadAuthor', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Reply as ReplyAuthor', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

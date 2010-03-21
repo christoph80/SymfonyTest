@@ -12,9 +12,7 @@ class topicActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->topics = Doctrine::getTable('Topic')
-      ->createQuery('a')
-      ->execute();
+    $this->topics = Doctrine_Core::getTable('Topic')->getWithThreads();
   }
 
   public function executeShow(sfWebRequest $request)

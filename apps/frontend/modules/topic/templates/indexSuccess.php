@@ -1,26 +1,39 @@
-<h1>Topics List</h1>
+<h1>Forum</h1>
+<hr />
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Directive</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-    </tr>
-  </thead>
-  <tbody>
     <?php foreach ($topics as $topic): ?>
-    <tr>
-      <td><a href="<?php echo url_for('topic/show?id='.$topic->getId()) ?>"><?php echo $topic->getId() ?></a></td>
-      <td><?php echo $topic->getTitle() ?></td>
-      <td><?php echo $topic->getDirectiveId() ?></td>
-      <td><?php echo $topic->getCreatedAt() ?></td>
-      <td><?php echo $topic->getUpdatedAt() ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
+    
+    <h1>Topic: <?php echo $topic->getTitle() ?></h1>	
+
+    <table class="threads">
+
+      <!--
+      <thead>
+       <tr>
+        <th>Title</th>
+        <th>Autor</th>
+        <th>Updated at</th>
+       </tr>
+      </thead>
+      -->
+
+      <tbody>	 
+      <?php foreach ($topic->getTopicThreads() as $i => $thread): ?>
+         <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
+           <td class="Title">
+             <?php echo link_to($thread->getTitle(),'selected-thread',$thread) ?>
+           </td>
+	   <td class="User">
+             <?php echo "MUSS NOCH" ?>
+           </td>
+           <td class="Zugriff">
+               <?php echo $thread->getUpdatedAt() ?>
+           </td>
+         </tr>
+       <?php endforeach; ?>
+      </tbody>
+    </table>
+    
+  <?php endforeach; ?>
 
   <a href="<?php echo url_for('topic/new') ?>">New</a>

@@ -1,3 +1,6 @@
+<h1><?php echo $topic->getTitle() ?></h1>
+
+<!-- 
 <table>
   <tbody>
     <tr>
@@ -22,6 +25,11 @@
     </tr>
   </tbody>
 </table>
+-->
+
+<hr />
+
+<h1>Threads</h1>
 
 <hr />
 

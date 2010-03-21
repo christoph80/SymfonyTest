@@ -12,7 +12,7 @@
     <div id="container">
       <div id="header">
         <div class="content">
-          <h1><a href="<?php echo url_for('user/index') ?>">
+          <h1><a href="<?php echo url_for('content/index') ?>">
             <img src="/images/logo.jpg" alt="openBRD+" />
           </a></h1>
  
@@ -23,6 +23,21 @@
                 <a href="<?php echo url_for('user/new') ?>">Register to openBRD+</a>
               </div>
             </div>
+		
+	    <?php if ($sf_user->isAuthenticated()): ?>
+            <div id="menu">
+            <ul>
+            <li><?php echo link_to('Inhalte', 'content') ?></li>
+            <li><?php echo link_to('Forum', 'topic') ?></li>
+	    <?php if ($sf_user->isSuperAdmin()): ?>
+	      <li><?php echo link_to('Users', '@sf_guard_user') ?></li>
+              <li><?php echo link_to('Groups', '@sf_guard_group') ?></li>
+	      <li><?php echo link_to('Permissions', '@sf_guard_permission') ?></li>            
+            <?php endif; ?>            
+            <li><?php echo link_to('Logout', '@sf_guard_signout') ?></li>
+            </ul>
+            </div>
+            <?php endif; ?>
  
             <div class="search">
               <h2>Search for Content / Discussions</h2>
@@ -38,7 +53,7 @@
           </div>
         </div>
       </div>
- 
+
       <div id="content">
         <?php if ($sf_user->hasFlash('notice')): ?>
           <div class="flash_notice">

@@ -3,9 +3,9 @@
 /**
  * thread actions.
  *
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage thread
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class threadActions extends sfActions

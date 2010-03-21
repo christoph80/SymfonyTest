@@ -35,4 +35,8 @@ all:
     use_database:           true
 
     # Enable Modules
-    enabled_modules:      [sfFLVPlayerTest](default,)
+    enabled_modules:      [idefault, sfFLVPlayerTest, sfGuardAuth, sfGuardUser, sfGuardGroup, sfGuardPermission]
+
+  .actions:
+    login_module:    sfGuardAuth
+    login_action:    signin

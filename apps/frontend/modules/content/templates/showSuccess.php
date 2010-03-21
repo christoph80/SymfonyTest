@@ -1,3 +1,7 @@
+<h1>Besitzer</h1>
+<?php echo link_to($content->getUserId(),'content-owner', $content) ?>
+
+<h1>Inhalt</h1>
 <table>
   <tbody>
     <tr>

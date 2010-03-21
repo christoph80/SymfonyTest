@@ -55,9 +55,9 @@
  * @method Content             setPrevAccess()    Sets the current record's "PrevAccess" value
  * @method Content             setContentThread() Sets the current record's "ContentThread" collection
  * 
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage model
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 abstract class BaseContent extends sfDoctrineRecord

@@ -9,25 +9,34 @@
  * @property string $textbody
  * @property integer $content_id
  * @property integer $topic_id
+ * @property integer $user_id
  * @property Content $Content
  * @property Topic $Topic
+ * @property User $User
+ * @property Doctrine_Collection $ReplyThread
  * 
- * @method string  getTitle()      Returns the current record's "title" value
- * @method string  getTextbody()   Returns the current record's "textbody" value
- * @method integer getContentId()  Returns the current record's "content_id" value
- * @method integer getTopicId()    Returns the current record's "topic_id" value
- * @method Content getContent()    Returns the current record's "Content" value
- * @method Topic   getTopic()      Returns the current record's "Topic" value
- * @method Thread  setTitle()      Sets the current record's "title" value
- * @method Thread  setTextbody()   Sets the current record's "textbody" value
- * @method Thread  setContentId()  Sets the current record's "content_id" value
- * @method Thread  setTopicId()    Sets the current record's "topic_id" value
- * @method Thread  setContent()    Sets the current record's "Content" value
- * @method Thread  setTopic()      Sets the current record's "Topic" value
+ * @method string              getTitle()       Returns the current record's "title" value
+ * @method string              getTextbody()    Returns the current record's "textbody" value
+ * @method integer             getContentId()   Returns the current record's "content_id" value
+ * @method integer             getTopicId()     Returns the current record's "topic_id" value
+ * @method integer             getUserId()      Returns the current record's "user_id" value
+ * @method Content             getContent()     Returns the current record's "Content" value
+ * @method Topic               getTopic()       Returns the current record's "Topic" value
+ * @method User                getUser()        Returns the current record's "User" value
+ * @method Doctrine_Collection getReplyThread() Returns the current record's "ReplyThread" collection
+ * @method Thread              setTitle()       Sets the current record's "title" value
+ * @method Thread              setTextbody()    Sets the current record's "textbody" value
+ * @method Thread              setContentId()   Sets the current record's "content_id" value
+ * @method Thread              setTopicId()     Sets the current record's "topic_id" value
+ * @method Thread              setUserId()      Sets the current record's "user_id" value
+ * @method Thread              setContent()     Sets the current record's "Content" value
+ * @method Thread              setTopic()       Sets the current record's "Topic" value
+ * @method Thread              setUser()        Sets the current record's "User" value
+ * @method Thread              setReplyThread() Sets the current record's "ReplyThread" collection
  * 
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage model
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 abstract class BaseThread extends sfDoctrineRecord
@@ -51,6 +60,9 @@ abstract class BaseThread extends sfDoctrineRecord
         $this->hasColumn('topic_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('user_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -65,6 +77,15 @@ abstract class BaseThread extends sfDoctrineRecord
              'local' => 'topic_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasOne('User', array(
+             'local' => 'user_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasMany('Reply as ReplyThread', array(
+             'local' => 'id',
+             'foreign' => 'thread_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

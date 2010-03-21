@@ -1,28 +1,14 @@
+<h1><?php echo $thread->getTitle() ?></h1>
+
 <table>
   <tbody>
-    <tr>
-      <th>Id:</th>
-      <td><?php echo $thread->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Title:</th>
-      <td><?php echo $thread->getTitle() ?></td>
-    </tr>
     <tr>
       <th>Textbody:</th>
       <td><?php echo $thread->getTextbody() ?></td>
     </tr>
     <tr>
-      <th>Content:</th>
-      <td><?php echo $thread->getContentId() ?></td>
-    </tr>
-    <tr>
-      <th>Topic:</th>
-      <td><?php echo $thread->getTopicId() ?></td>
-    </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $thread->getCreatedAt() ?></td>
+      <th>User:</th>
+      <td><?php echo $thread->getUserId() ?></td>
     </tr>
     <tr>
       <th>Updated at:</th>
@@ -30,6 +16,10 @@
     </tr>
   </tbody>
 </table>
+
+<hr />
+
+<h1>Replies</h1>
 
 <hr />
 

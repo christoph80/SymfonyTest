@@ -12,4 +12,14 @@
  */
 class Topic extends BaseTopic
 {
+
+	public function getTopicThreads()
+        {
+                $q = Doctrine_Query::create()
+                  ->from('Thread t')
+                  ->where('t.topic_id = ?', $this->getId());
+
+                return Doctrine_Core::getTable('Thread')->getThreads($q);
+        }
+
 }

@@ -19,9 +19,9 @@
  * @method Page    setTextbody()    Sets the current record's "textbody" value
  * @method Page    setHasContent()  Sets the current record's "has_content" value
  * 
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage model
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 abstract class BasePage extends sfDoctrineRecord

@@ -25,9 +25,9 @@
  * @method Ranking             setRankingFullAccess() Sets the current record's "RankingFullAccess" collection
  * @method Ranking             setRankingPrevAccess() Sets the current record's "RankingPrevAccess" collection
  * 
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage model
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 abstract class BaseRanking extends sfDoctrineRecord

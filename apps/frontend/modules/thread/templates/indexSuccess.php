@@ -8,6 +8,7 @@
       <th>Textbody</th>
       <th>Content</th>
       <th>Topic</th>
+      <th>User</th>
       <th>Created at</th>
       <th>Updated at</th>
     </tr>
@@ -20,6 +21,7 @@
       <td><?php echo $thread->getTextbody() ?></td>
       <td><?php echo $thread->getContentId() ?></td>
       <td><?php echo $thread->getTopicId() ?></td>
+      <td><?php echo $thread->getUserId() ?></td>
       <td><?php echo $thread->getCreatedAt() ?></td>
       <td><?php echo $thread->getUpdatedAt() ?></td>
     </tr>

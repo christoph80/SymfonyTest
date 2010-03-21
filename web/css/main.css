@@ -400,3 +400,31 @@ td
   border-bottom: 1px dotted #999;
   text-align: left;
 }
+
+#menu
+{
+ display: block;
+ width: 100%;
+ background: #000000;
+}
+
+#menu ul 
+{
+height: 15px;
+padding: 2px;
+padding-left: 10px;
+}
+
+#menu li a
+{
+ float: left;
+ text-decoration: none;
+ padding-right: 10px;
+ color: #CCCCCC;
+}
+
+#menu li a:hover
+{
+ color: #FFFFFF;
+}
+

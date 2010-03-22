@@ -3,9 +3,10 @@
 <h1>Users: <?php echo $users->count() ?></h1>
  
 <div id="users">
+
   <table class="users">
    
-   <thead class="heading">
+  <thead class="heading">
     <tr>
       <th>Username</th>
       <th>Active Since</th>
@@ -14,7 +15,7 @@
     </tr>
   </thead> 
 
-   <?php foreach ($users as $i => $user): ?>
+  <?php foreach ($users as $i => $user): ?>
       <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
         <td class="name">
 	  <a href="<?php echo url_for('user/show?id='.$user->getId()) ?>">
@@ -29,6 +30,7 @@
       </tr>
     <?php endforeach; ?>
   </table>
+
 </div>
 
 <a href="<?php echo url_for('user/new') ?>">New</a>

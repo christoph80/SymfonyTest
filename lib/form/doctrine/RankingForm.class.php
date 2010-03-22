@@ -3,9 +3,9 @@
 /**
  * Ranking form.
  *
- * @package    HELLO_WORLD
+ * @package    OpenBRD
  * @subpackage form
- * @author     Your name here
+ * @author     Ralph B. Magnus
  * @version    SVN: $Id: sfDoctrineFormTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class RankingForm extends BaseRankingForm

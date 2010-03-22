@@ -12,7 +12,7 @@
  * @property integer $user_id
  * @property Content $Content
  * @property Topic $Topic
- * @property User $User
+ * @property sfGuardUser $User
  * @property Doctrine_Collection $ReplyThread
  * 
  * @method string              getTitle()       Returns the current record's "title" value
@@ -22,7 +22,7 @@
  * @method integer             getUserId()      Returns the current record's "user_id" value
  * @method Content             getContent()     Returns the current record's "Content" value
  * @method Topic               getTopic()       Returns the current record's "Topic" value
- * @method User                getUser()        Returns the current record's "User" value
+ * @method sfGuardUser         getUser()        Returns the current record's "User" value
  * @method Doctrine_Collection getReplyThread() Returns the current record's "ReplyThread" collection
  * @method Thread              setTitle()       Sets the current record's "title" value
  * @method Thread              setTextbody()    Sets the current record's "textbody" value
@@ -60,8 +60,9 @@ abstract class BaseThread extends sfDoctrineRecord
         $this->hasColumn('topic_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('user_id', 'integer', null, array(
+        $this->hasColumn('user_id', 'integer', 4, array(
              'type' => 'integer',
+             'length' => '4',
              ));
     }
 
@@ -78,10 +79,9 @@ abstract class BaseThread extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('User', array(
+        $this->hasOne('sfGuardUser as User', array(
              'local' => 'user_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
+             'foreign' => 'id'));
 
         $this->hasMany('Reply as ReplyThread', array(
              'local' => 'id',

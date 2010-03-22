@@ -13,7 +13,6 @@
  * @property integer $ranking_id
  * @property Directive $Directive
  * @property Ranking $Ranking
- * @property Doctrine_Collection $UserContent
  * @property Doctrine_Collection $ThreadAuthor
  * @property Doctrine_Collection $ReplyAuthor
  * 
@@ -25,7 +24,6 @@
  * @method integer             getRankingId()    Returns the current record's "ranking_id" value
  * @method Directive           getDirective()    Returns the current record's "Directive" value
  * @method Ranking             getRanking()      Returns the current record's "Ranking" value
- * @method Doctrine_Collection getUserContent()  Returns the current record's "UserContent" collection
  * @method Doctrine_Collection getThreadAuthor() Returns the current record's "ThreadAuthor" collection
  * @method Doctrine_Collection getReplyAuthor()  Returns the current record's "ReplyAuthor" collection
  * @method User                setUsername()     Sets the current record's "username" value
@@ -36,7 +34,6 @@
  * @method User                setRankingId()    Sets the current record's "ranking_id" value
  * @method User                setDirective()    Sets the current record's "Directive" value
  * @method User                setRanking()      Sets the current record's "Ranking" value
- * @method User                setUserContent()  Sets the current record's "UserContent" collection
  * @method User                setThreadAuthor() Sets the current record's "ThreadAuthor" collection
  * @method User                setReplyAuthor()  Sets the current record's "ReplyAuthor" collection
  * 
@@ -98,10 +95,6 @@ abstract class BaseUser extends sfDoctrineRecord
              'local' => 'ranking_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasMany('Content as UserContent', array(
-             'local' => 'id',
-             'foreign' => 'user_id'));
 
         $this->hasMany('Thread as ThreadAuthor', array(
              'local' => 'id',

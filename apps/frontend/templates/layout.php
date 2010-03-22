@@ -35,8 +35,9 @@
 	      <li><?php echo link_to('Permissions', '@sf_guard_permission') ?></li>            
             <?php endif; ?>            
             <li><?php echo link_to('Logout', '@sf_guard_signout') ?></li>
+	    <li><?php echo "(".$sf_user.")" ?></li>	
             </ul>
-            </div>
+	    </div>
             <?php endif; ?>
  
             <div class="search">

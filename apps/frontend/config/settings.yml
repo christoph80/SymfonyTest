@@ -35,7 +35,7 @@ all:
     use_database:           true
 
     # Enable Modules
-    enabled_modules:      [idefault, sfFLVPlayerTest, sfGuardAuth, sfGuardUser, sfGuardGroup, sfGuardPermission]
+    enabled_modules:      [default, sfFLVPlayerTest, sfGuardAuth, sfGuardUser, sfGuardGroup, sfGuardPermission]
 
   .actions:
     login_module:    sfGuardAuth

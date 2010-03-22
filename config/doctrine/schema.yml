@@ -4,25 +4,15 @@ Directive:
     name: { type: string(255), notnull: true, unique: true }
     misc: { type: string(255) }
 
-Ranking:
+sfGuardUserProfile:
   actAs: { Timestampable: ~ }
   columns:
-    name:  { type: string(255), notnull: true, unique: true }
-    prio:  { type: integer, notnull: true }
-    icon:  { type: string(255), notnull: true, unique: true }
-
-User:
-  actAs: { Timestampable: ~ }
-  columns:
-    username:     { type: string(255), notnull: true, unique: true }
-    password:     { type: string(255), notnull: true }
-    regkey:       { type: string(255), notnull: true, unique: true }
-    role:         { type: enum, values: [administrator, moderator, user] }
-    directive_id: { type: integer, notnull: true } 
-    ranking_id:   { type: integer, notnull: true }
+    user_id:	 { type: integer(4) }
+    first_name:  { type: string(20) }
+    last_name:   { type: string(20) }
+    email:       { type: string(75) }
   relations:
-    Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveUser }
-    Ranking:      { onDelete: CASCADE, local: ranking_id, foreign: id, foreignAlias: RankingUser }
+    sfGuardUser: { class: sfGuardUser, local: user_id, foreign: id, type: one, foreignType: one, foreignAlias: UserProfile }
 
 Content:
   actAs: { Timestampable: ~ }
@@ -34,15 +24,15 @@ Content:
     full_content: { type: string(255), notnull: true }
     prev_content: { type: string(255), notnull: true }
     thmb_content: { type: string(255), notnull: true }
-    user_id:      { type: integer, notnull: true }
+    user_id:      { type: integer(4), notnull: true }
     directive_id: { type: integer, notnull: true }
-    fullaccess_id:  { type: integer }
-    prevaccess_id:  { type: integer }
-  relations:      
-    User:	  { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: UserContent }	
-    Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveContent }
-    FullAccess:   { class: Ranking, local: fullaccess_id, foreign: id, foreignAlias: RankingFullAccess }
-    PrevAccess:	  { class: Ranking, local: prevaccess_id, foreign: id, foreignAlias: RankingPrevAccess }
+    fullaccess_id:  { type: integer(4) }
+    prevaccess_id:  { type: integer(4) }
+  relations:     
+    Directive:    { onDelete: CASCADE, local: directive_id, foreign: id, foreignAlias: DirectiveContent } 
+    User:         { class: sfGuardUser, local: user_id, foreign: id, foreignAlias: UserContent }
+    FullAccess:   { class: sfGuardPermission, local: fullaccess_id, foreign: id, foreignAlias: RankingFullAccess }
+    PrevAccess:	  { class: sfGuardPermission, local: prevaccess_id, foreign: id, foreignAlias: RankingPrevAccess }
     
 Page:
   actAs: { Timestampable: ~ }
@@ -67,19 +57,19 @@ Thread:
     textbody:     { type: string(2550), notnull: true }
     content_id:   { type: integer }
     topic_id:     { type: integer }
-    user_id:	  { type: integer }
+    user_id:	  { type: integer(4) }
   relations:
     Content:      { onDelete: CASCADE, local: content_id, foreign: id, foreignAlias: ContentThread }
     Topic:        { onDelete: CASCADE, local: topic_id, foreign: id, foreignAlias: TopicThread } 
-    User:         { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: ThreadAuthor }
+    User:         { class: sfGuardUser, local: user_id, foreign: id, foreignAlias: UserContent }    
 
 Reply:
   actAs: { Timestampable: ~ }
   columns:
     textbody:	  { type: string(2550), notnull: true }
     thread_id:    { type: integer }
-    user_id:      { type: integer }
+    user_id:      { type: integer(4) }
   relations: 
     Thread:       { onDelete: CASCADE, local: thread_id, foreign: id, foreignAlias: ReplyThread }
-    User:         { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: ReplyAuthor }
+    User:         { class: sfGuardUser, local: user_id, foreign: id, foreignAlias: UserContent }
 

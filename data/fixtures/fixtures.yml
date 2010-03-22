@@ -3,16 +3,51 @@ sfGuardUser:
     username:       admin
     password:       admin
     groups: 	    [openbrd_admin]
-    permissions:    [openbrd_admin]	
+    permissions:    [openbrd_admin]
     is_super_admin: true
+  openbrd_mod:
+    username:	    sysmod
+    password:       mod
+    groups:         [openbrd_mod]
+    permissions:    [openbrd_mod]
+    is_super_admin: false
 
+sfGuardUserProfile:
+  openbrd_admin_profile:  
+    sfGuardUser:    openbrd_admin
+    first_name:     Ralph B.
+    last_name:      Magnus
+    email:          info@magnus-network.de
+    
 sfGuardPermission:
   openbrd_admin:
     name:           administrator
     description:    Administrator Rechte
+  openbrd_mod:
+    name:           mod
+    description:    Moderator Rechte
+  openbrd_platin:
+    name:	    platin
+    description:    Platin Rechte
+  openbrd_gold:
+    name:           gold
+    description:    Gold Rechte
+  openbrd_silber:
+    name:           silber
+    description:    Silber Rechte
+  openbrd_bronze:
+    name:           bronze
+    description:    Bronze Rechte
+  openbrd_noob:
+    name:           noob
+    description:    Noob Rechte
 
 sfGuardGroup:
   openbrd_admin:
     name:           Administratoren
     description:    Administrator Gruppe
-
+    permissions:    [openbrd_admin]
+  openbrd_mod:
+    name:           Moderatoren
+    description:    Moderatoren Gruppe
+    permissions:    [openbrd_mod]

@@ -9,18 +9,18 @@
  * @property integer $thread_id
  * @property integer $user_id
  * @property Thread $Thread
- * @property User $User
+ * @property sfGuardUser $User
  * 
- * @method string  getTextbody()  Returns the current record's "textbody" value
- * @method integer getThreadId()  Returns the current record's "thread_id" value
- * @method integer getUserId()    Returns the current record's "user_id" value
- * @method Thread  getThread()    Returns the current record's "Thread" value
- * @method User    getUser()      Returns the current record's "User" value
- * @method Reply   setTextbody()  Sets the current record's "textbody" value
- * @method Reply   setThreadId()  Sets the current record's "thread_id" value
- * @method Reply   setUserId()    Sets the current record's "user_id" value
- * @method Reply   setThread()    Sets the current record's "Thread" value
- * @method Reply   setUser()      Sets the current record's "User" value
+ * @method string      getTextbody()  Returns the current record's "textbody" value
+ * @method integer     getThreadId()  Returns the current record's "thread_id" value
+ * @method integer     getUserId()    Returns the current record's "user_id" value
+ * @method Thread      getThread()    Returns the current record's "Thread" value
+ * @method sfGuardUser getUser()      Returns the current record's "User" value
+ * @method Reply       setTextbody()  Sets the current record's "textbody" value
+ * @method Reply       setThreadId()  Sets the current record's "thread_id" value
+ * @method Reply       setUserId()    Sets the current record's "user_id" value
+ * @method Reply       setThread()    Sets the current record's "Thread" value
+ * @method Reply       setUser()      Sets the current record's "User" value
  * 
  * @package    OpenBRD
  * @subpackage model
@@ -40,8 +40,9 @@ abstract class BaseReply extends sfDoctrineRecord
         $this->hasColumn('thread_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('user_id', 'integer', null, array(
+        $this->hasColumn('user_id', 'integer', 4, array(
              'type' => 'integer',
+             'length' => '4',
              ));
     }
 
@@ -53,10 +54,9 @@ abstract class BaseReply extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('User', array(
+        $this->hasOne('sfGuardUser as User', array(
              'local' => 'user_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
+             'foreign' => 'id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

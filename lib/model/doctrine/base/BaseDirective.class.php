@@ -7,18 +7,15 @@
  * 
  * @property string $name
  * @property string $misc
- * @property Doctrine_Collection $DirectiveUser
  * @property Doctrine_Collection $DirectiveContent
  * @property Doctrine_Collection $DirectiveTopic
  * 
  * @method string              getName()             Returns the current record's "name" value
  * @method string              getMisc()             Returns the current record's "misc" value
- * @method Doctrine_Collection getDirectiveUser()    Returns the current record's "DirectiveUser" collection
  * @method Doctrine_Collection getDirectiveContent() Returns the current record's "DirectiveContent" collection
  * @method Doctrine_Collection getDirectiveTopic()   Returns the current record's "DirectiveTopic" collection
  * @method Directive           setName()             Sets the current record's "name" value
  * @method Directive           setMisc()             Sets the current record's "misc" value
- * @method Directive           setDirectiveUser()    Sets the current record's "DirectiveUser" collection
  * @method Directive           setDirectiveContent() Sets the current record's "DirectiveContent" collection
  * @method Directive           setDirectiveTopic()   Sets the current record's "DirectiveTopic" collection
  * 
@@ -47,10 +44,6 @@ abstract class BaseDirective extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('User as DirectiveUser', array(
-             'local' => 'id',
-             'foreign' => 'directive_id'));
-
         $this->hasMany('Content as DirectiveContent', array(
              'local' => 'id',
              'foreign' => 'directive_id'));

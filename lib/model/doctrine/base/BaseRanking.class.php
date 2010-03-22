@@ -9,21 +9,15 @@
  * @property integer $prio
  * @property string $icon
  * @property Doctrine_Collection $RankingUser
- * @property Doctrine_Collection $RankingFullAccess
- * @property Doctrine_Collection $RankingPrevAccess
  * 
- * @method string              getName()              Returns the current record's "name" value
- * @method integer             getPrio()              Returns the current record's "prio" value
- * @method string              getIcon()              Returns the current record's "icon" value
- * @method Doctrine_Collection getRankingUser()       Returns the current record's "RankingUser" collection
- * @method Doctrine_Collection getRankingFullAccess() Returns the current record's "RankingFullAccess" collection
- * @method Doctrine_Collection getRankingPrevAccess() Returns the current record's "RankingPrevAccess" collection
- * @method Ranking             setName()              Sets the current record's "name" value
- * @method Ranking             setPrio()              Sets the current record's "prio" value
- * @method Ranking             setIcon()              Sets the current record's "icon" value
- * @method Ranking             setRankingUser()       Sets the current record's "RankingUser" collection
- * @method Ranking             setRankingFullAccess() Sets the current record's "RankingFullAccess" collection
- * @method Ranking             setRankingPrevAccess() Sets the current record's "RankingPrevAccess" collection
+ * @method string              getName()        Returns the current record's "name" value
+ * @method integer             getPrio()        Returns the current record's "prio" value
+ * @method string              getIcon()        Returns the current record's "icon" value
+ * @method Doctrine_Collection getRankingUser() Returns the current record's "RankingUser" collection
+ * @method Ranking             setName()        Sets the current record's "name" value
+ * @method Ranking             setPrio()        Sets the current record's "prio" value
+ * @method Ranking             setIcon()        Sets the current record's "icon" value
+ * @method Ranking             setRankingUser() Sets the current record's "RankingUser" collection
  * 
  * @package    OpenBRD
  * @subpackage model
@@ -59,14 +53,6 @@ abstract class BaseRanking extends sfDoctrineRecord
         $this->hasMany('User as RankingUser', array(
              'local' => 'id',
              'foreign' => 'ranking_id'));
-
-        $this->hasMany('Content as RankingFullAccess', array(
-             'local' => 'id',
-             'foreign' => 'fullaccess_id'));
-
-        $this->hasMany('Content as RankingPrevAccess', array(
-             'local' => 'id',
-             'foreign' => 'prevaccess_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

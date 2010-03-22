@@ -16,10 +16,10 @@
  * @property integer $directive_id
  * @property integer $fullaccess_id
  * @property integer $prevaccess_id
- * @property User $User
  * @property Directive $Directive
- * @property Ranking $FullAccess
- * @property Ranking $PrevAccess
+ * @property sfGuardUser $User
+ * @property sfGuardPermission $FullAccess
+ * @property sfGuardPermission $PrevAccess
  * @property Doctrine_Collection $ContentThread
  * 
  * @method string              getName()          Returns the current record's "name" value
@@ -33,10 +33,10 @@
  * @method integer             getDirectiveId()   Returns the current record's "directive_id" value
  * @method integer             getFullaccessId()  Returns the current record's "fullaccess_id" value
  * @method integer             getPrevaccessId()  Returns the current record's "prevaccess_id" value
- * @method User                getUser()          Returns the current record's "User" value
  * @method Directive           getDirective()     Returns the current record's "Directive" value
- * @method Ranking             getFullAccess()    Returns the current record's "FullAccess" value
- * @method Ranking             getPrevAccess()    Returns the current record's "PrevAccess" value
+ * @method sfGuardUser         getUser()          Returns the current record's "User" value
+ * @method sfGuardPermission   getFullAccess()    Returns the current record's "FullAccess" value
+ * @method sfGuardPermission   getPrevAccess()    Returns the current record's "PrevAccess" value
  * @method Doctrine_Collection getContentThread() Returns the current record's "ContentThread" collection
  * @method Content             setName()          Sets the current record's "name" value
  * @method Content             setShortdesc()     Sets the current record's "shortdesc" value
@@ -49,8 +49,8 @@
  * @method Content             setDirectiveId()   Sets the current record's "directive_id" value
  * @method Content             setFullaccessId()  Sets the current record's "fullaccess_id" value
  * @method Content             setPrevaccessId()  Sets the current record's "prevaccess_id" value
- * @method Content             setUser()          Sets the current record's "User" value
  * @method Content             setDirective()     Sets the current record's "Directive" value
+ * @method Content             setUser()          Sets the current record's "User" value
  * @method Content             setFullAccess()    Sets the current record's "FullAccess" value
  * @method Content             setPrevAccess()    Sets the current record's "PrevAccess" value
  * @method Content             setContentThread() Sets the current record's "ContentThread" collection
@@ -104,40 +104,42 @@ abstract class BaseContent extends sfDoctrineRecord
              'notnull' => true,
              'length' => '255',
              ));
-        $this->hasColumn('user_id', 'integer', null, array(
+        $this->hasColumn('user_id', 'integer', 4, array(
              'type' => 'integer',
              'notnull' => true,
+             'length' => '4',
              ));
         $this->hasColumn('directive_id', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('fullaccess_id', 'integer', null, array(
+        $this->hasColumn('fullaccess_id', 'integer', 4, array(
              'type' => 'integer',
+             'length' => '4',
              ));
-        $this->hasColumn('prevaccess_id', 'integer', null, array(
+        $this->hasColumn('prevaccess_id', 'integer', 4, array(
              'type' => 'integer',
+             'length' => '4',
              ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('User', array(
-             'local' => 'user_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
         $this->hasOne('Directive', array(
              'local' => 'directive_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('Ranking as FullAccess', array(
+        $this->hasOne('sfGuardUser as User', array(
+             'local' => 'user_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('sfGuardPermission as FullAccess', array(
              'local' => 'fullaccess_id',
              'foreign' => 'id'));
 
-        $this->hasOne('Ranking as PrevAccess', array(
+        $this->hasOne('sfGuardPermission as PrevAccess', array(
              'local' => 'prevaccess_id',
              'foreign' => 'id'));
 

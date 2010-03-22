@@ -12,6 +12,8 @@
  * @property Doctrine_Collection $sfGuardGroupPermission
  * @property Doctrine_Collection $Users
  * @property Doctrine_Collection $sfGuardUserPermission
+ * @property Doctrine_Collection $RankingFullAccess
+ * @property Doctrine_Collection $RankingPrevAccess
  * 
  * @method integer             getId()                     Returns the current record's "id" value
  * @method string              getName()                   Returns the current record's "name" value
@@ -20,6 +22,8 @@
  * @method Doctrine_Collection getSfGuardGroupPermission() Returns the current record's "sfGuardGroupPermission" collection
  * @method Doctrine_Collection getUsers()                  Returns the current record's "Users" collection
  * @method Doctrine_Collection getSfGuardUserPermission()  Returns the current record's "sfGuardUserPermission" collection
+ * @method Doctrine_Collection getRankingFullAccess()      Returns the current record's "RankingFullAccess" collection
+ * @method Doctrine_Collection getRankingPrevAccess()      Returns the current record's "RankingPrevAccess" collection
  * @method sfGuardPermission   setId()                     Sets the current record's "id" value
  * @method sfGuardPermission   setName()                   Sets the current record's "name" value
  * @method sfGuardPermission   setDescription()            Sets the current record's "description" value
@@ -27,6 +31,8 @@
  * @method sfGuardPermission   setSfGuardGroupPermission() Sets the current record's "sfGuardGroupPermission" collection
  * @method sfGuardPermission   setUsers()                  Sets the current record's "Users" collection
  * @method sfGuardPermission   setSfGuardUserPermission()  Sets the current record's "sfGuardUserPermission" collection
+ * @method sfGuardPermission   setRankingFullAccess()      Sets the current record's "RankingFullAccess" collection
+ * @method sfGuardPermission   setRankingPrevAccess()      Sets the current record's "RankingPrevAccess" collection
  * 
  * @package    OpenBRD
  * @subpackage model
@@ -75,6 +81,14 @@ abstract class BasesfGuardPermission extends sfDoctrineRecord
         $this->hasMany('sfGuardUserPermission', array(
              'local' => 'id',
              'foreign' => 'permission_id'));
+
+        $this->hasMany('Content as RankingFullAccess', array(
+             'local' => 'id',
+             'foreign' => 'fullaccess_id'));
+
+        $this->hasMany('Content as RankingPrevAccess', array(
+             'local' => 'id',
+             'foreign' => 'prevaccess_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

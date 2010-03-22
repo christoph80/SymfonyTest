@@ -10,6 +10,25 @@
  */
 class profileActions extends sfActions
 {
+  
+  public function executeCall(sfWebRequest $request)
+  {
+
+    if($request->getParameter('user_id'))
+     {
+       $p = $this->getUser()->getGuardUser()->getProfile();
+       //$p = new sfGuardUserProfile();
+       //$p->setUserId($request->getParameter('user_id'));
+       $this->form = new sfGuardUserProfileForm($p);
+     }
+     else
+     {
+       $p = new sfGuardUserProfile();
+       $this->form = new sfGuardUserProfileForm($p);	
+     }
+   
+  }
+
   public function executeIndex(sfWebRequest $request)
   {
     $this->sf_guard_user_profiles = Doctrine::getTable('sfGuardUserProfile')

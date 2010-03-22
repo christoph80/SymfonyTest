@@ -17,8 +17,8 @@ abstract class BasesfGuardUserProfileForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
       'user_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
-      'first_name' => new sfWidgetFormInputText(),
-      'last_name'  => new sfWidgetFormInputText(),
+      'firstname'  => new sfWidgetFormInputText(),
+      'lastname'   => new sfWidgetFormInputText(),
       'email'      => new sfWidgetFormInputText(),
       'created_at' => new sfWidgetFormDateTime(),
       'updated_at' => new sfWidgetFormDateTime(),
@@ -27,8 +27,8 @@ abstract class BasesfGuardUserProfileForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'         => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'user_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'required' => false)),
-      'first_name' => new sfValidatorString(array('max_length' => 20, 'required' => false)),
-      'last_name'  => new sfValidatorString(array('max_length' => 20, 'required' => false)),
+      'firstname'  => new sfValidatorString(array('max_length' => 20, 'required' => false)),
+      'lastname'   => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'email'      => new sfValidatorString(array('max_length' => 75, 'required' => false)),
       'created_at' => new sfValidatorDateTime(),
       'updated_at' => new sfValidatorDateTime(),

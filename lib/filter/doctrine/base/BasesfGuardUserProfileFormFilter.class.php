@@ -14,8 +14,8 @@ abstract class BasesfGuardUserProfileFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'user_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
-      'first_name' => new sfWidgetFormFilterInput(),
-      'last_name'  => new sfWidgetFormFilterInput(),
+      'firstname'  => new sfWidgetFormFilterInput(),
+      'lastname'   => new sfWidgetFormFilterInput(),
       'email'      => new sfWidgetFormFilterInput(),
       'created_at' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
@@ -23,8 +23,8 @@ abstract class BasesfGuardUserProfileFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'user_id'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('sfGuardUser'), 'column' => 'id')),
-      'first_name' => new sfValidatorPass(array('required' => false)),
-      'last_name'  => new sfValidatorPass(array('required' => false)),
+      'firstname'  => new sfValidatorPass(array('required' => false)),
+      'lastname'   => new sfValidatorPass(array('required' => false)),
       'email'      => new sfValidatorPass(array('required' => false)),
       'created_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
@@ -49,8 +49,8 @@ abstract class BasesfGuardUserProfileFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'         => 'Number',
       'user_id'    => 'ForeignKey',
-      'first_name' => 'Text',
-      'last_name'  => 'Text',
+      'firstname'  => 'Text',
+      'lastname'   => 'Text',
       'email'      => 'Text',
       'created_at' => 'Date',
       'updated_at' => 'Date',

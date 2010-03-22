@@ -13,6 +13,10 @@ sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
 
+profile:
+  class:   sfDoctrineRouteCollection
+  options: { model: Profile }
+
 content:
   class:   sfDoctrineRouteCollection
   options: { model: Content }
@@ -45,6 +49,15 @@ content-owner:
   param:   { module: user, action: show }
   requirements:
     id: \d+
+    sf_method: [get]
+
+call-profile:
+  url:  /profile/call/:user_id
+  class:   sfDoctrineRoute
+  options: { model: sfGuardUserProfile, type: object }
+  param:   { module: profile, action: call }
+  requirements:
+    user_id: \d+
     sf_method: [get]
 
 new-topic-thread:
